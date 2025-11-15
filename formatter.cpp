@@ -4,8 +4,9 @@
 SimpleFormatter::SimpleFormatter(std::string texHdr, std::string contentHdr, std::string testTitle)
     : texHeader(texHdr), contentHeader(contentHdr), title(testTitle) {}
 
-void SimpleFormatter::writeTest(std::ofstream& file, 
-                                const std::vector<std::shared_ptr<IProblem>>& problems) {
+void SimpleFormatter::writeTest
+    (std::ofstream& file, 
+    const std::vector<std::shared_ptr<IProblem>>& problems) {
 
     file << "\\input{" << texHeader << "}\n";
     file << "\\newcommand{\\testtitle}{" << title << "}\n";
@@ -19,9 +20,10 @@ void SimpleFormatter::writeTest(std::ofstream& file,
 }
 
 // FancyFormatter Implementation
-FancyFormatter::FancyFormatter(std::string texHdr, std::string contentHdr,
-                              std::string cls, std::string trm, std::string exam,
-                              std::string tm, std::string frm, int numProbs, std::string testTitle)
+FancyFormatter::FancyFormatter
+    (std::string texHdr, std::string contentHdr,
+    std::string cls, std::string trm, std::string exam,
+    std::string tm, std::string frm, int numProbs, std::string testTitle)
     : texHeader(texHdr), contentHeader(contentHdr), CLASS(cls), TERM(trm), 
       EXAM(exam), TIME(tm), FORM(frm), NUM_PROBLEMS(numProbs), TITLE(testTitle) {}
 
