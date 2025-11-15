@@ -4,19 +4,28 @@
 #include <string>
 #include <vector>
 
-class Problem {
+class IProblem {
 public:
-    std::string getQuestion();
-    std::string getAnswer();
-    std::string getTopic();
-    int getDifficulty();
-    Problem(std::string rawProblem);
-    static std::vector<Problem> problemList(std::string filename);
+    virtual ~IProblem() = default;
+    virtual std::string getQuestion() = 0;
+    virtual std::string getAnswer() = 0;
+};
+
+class TopicDifficultyProblem : public IProblem {
 private:
     std::string question;
     std::string answer;
     std::string topic;
     int difficulty;
+
+public:
+    std::string getQuestion() override;
+    std::string getAnswer() override;
+    std::string getTopic() const;
+    int getDifficulty() const;
+
+    TopicDifficultyProblem(std::string rawProblem);
+    static std::vector<TopicDifficultyProblem> problemList(const std::string& filename);
 };
 
 #endif
