@@ -44,4 +44,38 @@ public:
                   const std::vector<std::shared_ptr<IProblem>>& problems) override;
 };
 
+class AnswerKeyFormatter : public ITestFormatter {
+private:
+    std::string texHeader;
+    std::string contentHeader;
+    std::string title;
+public:
+    AnswerKeyFormatter(std::string texHdr, std::string contentHdr, std::string testTitle);
+    void writeTest
+        (std::ofstream& file, 
+        const std::vector<std::shared_ptr<IProblem>>& problems) override;
+};
+
+class LongProblemFormatter : public ITestFormatter {
+private:
+    std::string texHeader;
+    std::string contentHeader;
+    std::string CLASS;
+    std::string TERM;
+    std::string EXAM;
+    std::string TIME;
+    std::string FORM;
+    int NUM_PROBLEMS;
+    std::string TITLE;
+
+public:
+    LongProblemFormatter
+        (std::string texHdr, std::string contentHdr,
+        std::string cls, std::string trm, std::string exam,
+        std::string tm, std::string frm, int numProbs, std::string testTitle);
+    void writeTest
+        (std::ofstream& file, 
+        const std::vector<std::shared_ptr<IProblem>>& problems) override;
+};
+
 #endif

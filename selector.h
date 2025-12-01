@@ -20,4 +20,11 @@ class ShuffleSelector : public ISelector {
         std::vector<std::shared_ptr<IConstraint>>& constraints) override;
 };
 
+class NewSelector : public ISelector {
+    public:
+        std::vector<std::shared_ptr<IProblem>> selectProblems(std::vector<std::shared_ptr<IProblem>>& problems,
+        int numProblems,
+        std::vector<std::shared_ptr<IConstraint>>& constraints) override;
+};
+
 #endif
